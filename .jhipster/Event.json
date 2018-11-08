@@ -1,0 +1,30 @@
+{
+    "name": "Event",
+    "fields": [
+        {
+            "fieldName": "name",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "required"
+            ]
+        }
+    ],
+    "relationships": [
+        {
+            "relationshipType": "one-to-many",
+            "relationshipName": "codes",
+            "otherEntityName": "record",
+            "otherEntityRelationshipName": "event"
+        }
+    ],
+    "changelogDate": "20181108215503",
+    "javadoc": "ENTITIES",
+    "entityTableName": "event",
+    "dto": "no",
+    "pagination": "pagination",
+    "service": "no",
+    "jpaMetamodelFiltering": false,
+    "fluentMethods": true,
+    "clientRootFolder": "",
+    "applications": "*"
+}

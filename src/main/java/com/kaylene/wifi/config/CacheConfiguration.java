@@ -38,6 +38,9 @@ public class CacheConfiguration {
             cm.createCache(com.kaylene.wifi.domain.User.class.getName(), jcacheConfiguration);
             cm.createCache(com.kaylene.wifi.domain.Authority.class.getName(), jcacheConfiguration);
             cm.createCache(com.kaylene.wifi.domain.User.class.getName() + ".authorities", jcacheConfiguration);
+            cm.createCache(com.kaylene.wifi.domain.Event.class.getName(), jcacheConfiguration);
+            cm.createCache(com.kaylene.wifi.domain.Event.class.getName() + ".codes", jcacheConfiguration);
+            cm.createCache(com.kaylene.wifi.domain.Record.class.getName(), jcacheConfiguration);
             // jhipster-needle-ehcache-add-entry
         };
     }
