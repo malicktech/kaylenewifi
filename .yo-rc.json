@@ -1,0 +1,38 @@
+{
+  "generator-jhipster": {
+    "promptValues": {
+      "packageName": "com.kaylene.wifi",
+      "nativeLanguage": "fr"
+    },
+    "jhipsterVersion": "5.6.1",
+    "applicationType": "monolith",
+    "baseName": "kaylenewifi",
+    "packageName": "com.kaylene.wifi",
+    "packageFolder": "com/kaylene/wifi",
+    "serverPort": "8080",
+    "authenticationType": "jwt",
+    "cacheProvider": "ehcache",
+    "enableHibernateCache": true,
+    "websocket": false,
+    "databaseType": "sql",
+    "devDatabaseType": "h2Disk",
+    "prodDatabaseType": "mysql",
+    "searchEngine": false,
+    "messageBroker": false,
+    "serviceDiscoveryType": false,
+    "buildTool": "maven",
+    "enableSwaggerCodegen": false,
+    "jwtSecretKey": "YzMxYTkwZTg2MDIwODIyMTFkNzQwODJhOTJkZTA2MTRmZTg0MzExMDRjZDliNmJiNDQ4NjM5ZDA3ZDIzYTQwODRhZmU3ZTQwYmI4NTM5ODA1M2FkNDRkZWZlYWI0YTdkYWFlZWVhZTMyMmFhMjFiYjRmMWZhY2MzNjg2Nzc3MjY=",
+    "clientFramework": "angularX",
+    "useSass": true,
+    "clientPackageManager": "npm",
+    "testFrameworks": [],
+    "jhiPrefix": "jhi",
+    "enableTranslation": true,
+    "nativeLanguage": "fr",
+    "languages": [
+      "fr",
+      "en"
+    ]
+  }
+}
