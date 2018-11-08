@@ -1,0 +1,23 @@
+{
+    "kaylenewifiApp": {
+        "record": {
+            "home": {
+                "title": "Records",
+                "createLabel": "Créer un nouveau Record",
+                "createOrEditLabel": "Créer ou éditer un Record"
+            },
+            "created": "Un nouveau Record a été créé avec l'identifiant {{ param }}",
+            "updated": "Le Record avec l'identifiant {{ param }} a été mis à jour",
+            "deleted": "Le Record avec l'identifiant {{ param }} a été supprimé",
+            "delete": {
+                "question": "Etes-vous certain de vouloir supprimer le Record {{ id }} ?"
+            },
+            "detail": {
+                "title": "Record"
+            },
+            "phone": "Phone",
+            "code": "Code",
+            "event": "Event"
+        }
+    }
+}

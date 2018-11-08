@@ -1,0 +1,23 @@
+
+/* ENTITIES */
+
+entity Event {
+	// ID
+    // nom de l’event
+    name String required
+}
+
+entity Record {
+    // numéro de téléphone du client
+    phone String required
+    // code pass WIFI
+    code String required
+}
+
+relationship OneToMany {
+	Event{codes} to Record{event(name) required}
+}
+
+// OPTIONS
+service Record with serviceClass
+paginate * with pagination
