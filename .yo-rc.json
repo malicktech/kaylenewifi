@@ -42,5 +42,8 @@
     "dockerRepositoryName": "kaylene",
     "dockerPushCommand": "docker push",
     "enableRancherLoadBalancing": true
+  },
+  "generator-jhipster-entity-audit": {
+    "auditFramework": "custom"
   }
 }
