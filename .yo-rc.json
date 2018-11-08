@@ -33,6 +33,14 @@
     "languages": [
       "fr",
       "en"
-    ]
+    ],
+    "appsFolders": [
+      "kaylenewifi"
+    ],
+    "directoryPath": "../",
+    "monitoring": "elk",
+    "dockerRepositoryName": "kaylene",
+    "dockerPushCommand": "docker push",
+    "enableRancherLoadBalancing": true
   }
 }
