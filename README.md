@@ -5,10 +5,30 @@ This application was generated using JHipster 5.6.1, you can find documentation 
 
 To start your application in the dev profile, simply run:
 
-    
+Running the Java server
+The application will be available on http://localhost:8080.
+
+	./mvnw
+
+Running Webpack
+A BrowserSync task that will run on http://localhost:9000
+
+	npm install
+	npm start
 
 
 For further instructions on how to develop with JHipster, have a look at [Using JHipster in development][].
+
+Using the H2 database in development
+
+	http://localhost:8080/h2-console
+
+To connect to the database, select the pre-configured options:
+
+Driver Class: org.h2.Driver
+JDBC URL: jdbc:h2:mem:jhipster
+User name:
+Password:
 
 ### Using angular-cli
 
