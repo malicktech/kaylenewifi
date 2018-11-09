@@ -2,6 +2,9 @@
 - Boostrap project
 - Modelize & Generate Domain model
 - Implement Audit event
+- Implement sms business logic
+- phone number validation
+- unique event_code validation
 - set up docker 
 - set ci/cd in jenkins
 - create database
@@ -10,6 +13,11 @@
 - Set up jhipster registry
 - Set up jhipster console
 - change admin password
+
+- improve sms auth
+ 	- set up single ton restemplate
+ 	- 
+https://www.baeldung.com/how-to-use-resttemplate-with-basic-authentication-in-spring
 
 # Import JDL
 

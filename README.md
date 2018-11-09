@@ -11,7 +11,7 @@ The application will be available on http://localhost:8080.
 	./mvnw
 
 Running Webpack
-A BrowserSync task that will run on http://localhost:9000
+A BrowserSync task that will run on [localhost](http://localhost:9000)
 
 	npm install
 	npm start
@@ -32,7 +32,7 @@ Password:
 
 ### Using angular-cli
 
-You can also use [Angular CLI][] to generate some custom client code.
+You can also use [Angular CLI]() to generate some custom client code.
 
 For example, the following command:
 
