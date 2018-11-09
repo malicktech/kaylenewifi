@@ -1,6 +1,7 @@
 #!/usr/bin/env groovy
 
 node {
+
     stage('checkout') {
         checkout scm
     }
@@ -47,12 +48,13 @@ node {
             sh "./mvnw verify -Pprod -DskipTests"
             archiveArtifacts artifacts: '**/target/*.war', fingerprint: true
         }
+        
         stage('Directory Permission') {
 		        sh "chmod 777 -R target"
-            }
+        }
     }
 
-    maintainer_name = "kaylene"
+        maintainer_name = "kaylene"
         container_name = "kaylenewifi"
         registry_url = "https://index.docker.io/v1/"
         docker_creds_id = "docker-login"
