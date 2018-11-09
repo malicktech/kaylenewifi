@@ -9,6 +9,13 @@ Navbar
 
 .jh-navbar {
     background-color: #0072b1;
+    border-color: #005d90;
+    background-image: -webkit-gradient(linear, left 0%, left 100%, from(#0093e4), to(#0072b1));
+    background-image: -webkit-linear-gradient(top, #0093e4, 0%, #0072b1, 100%);
+    background-image: -moz-linear-gradient(top, #0093e4 0%, #0072b1 100%);
+    background-image: linear-gradient(to bottom, #0093e4 0%, #0072b1 100%);
+    background-repeat: repeat-x;
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ff0093e4', endColorstr='#ff0072b1', GradientType=0);
     padding: 0.2em 1em;
     .profile-image {
         margin: -10px 0px;
@@ -32,6 +39,7 @@ Navbar
     }
     a.nav-link {
         font-weight: 400;
+        color: #f8f9fa !important;
     }
     .jh-navbar-toggler {
         color: #ccc;
