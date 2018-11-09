@@ -14,7 +14,10 @@ import java.util.Objects;
  * A Record.
  */
 @Entity
-@Table(name = "record")
+@Table(
+		name = "record",
+		uniqueConstraints=@UniqueConstraint(columnNames={"code", "event_id"})
+)
 @Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
 public class Record extends AbstractAuditingEntity implements Serializable {
 

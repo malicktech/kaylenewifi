@@ -1,6 +1,9 @@
 package com.kaylene.wifi.repository;
 
 import com.kaylene.wifi.domain.Record;
+
+import java.util.Optional;
+
 import org.springframework.data.jpa.repository.*;
 import org.springframework.stereotype.Repository;
 
@@ -11,5 +14,7 @@ import org.springframework.stereotype.Repository;
 @SuppressWarnings("unused")
 @Repository
 public interface RecordRepository extends JpaRepository<Record, Long> {
+
+	Optional<Record> findOneByCodeAndEventId(String code, Long id);
 
 }

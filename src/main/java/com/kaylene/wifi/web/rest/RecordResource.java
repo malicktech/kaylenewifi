@@ -27,6 +27,8 @@ import com.kaylene.wifi.domain.Record;
 import com.kaylene.wifi.service.RecordService;
 import com.kaylene.wifi.service.orangeapi.SmsService;
 import com.kaylene.wifi.web.rest.errors.BadRequestAlertException;
+import com.kaylene.wifi.web.rest.errors.CodeAlreadyUsedException;
+import com.kaylene.wifi.web.rest.errors.LoginAlreadyUsedException;
 import com.kaylene.wifi.web.rest.util.HeaderUtil;
 import com.kaylene.wifi.web.rest.util.PaginationUtil;
 
@@ -66,9 +68,16 @@ public class RecordResource {
             throw new BadRequestAlertException("A new record cannot already have an ID", ENTITY_NAME, "idexists");
         }
         
+        if (recordService.findOneByCode(record.getCode(), record.getEvent().getId()).isPresent()) {
+            throw new CodeAlreadyUsedException();
+        }
+        
         Record result = recordService.save(record);
-        // if (result != null)
+        // if (result != null) {
         // smsService.sendCodeSms(result);
+        // TODO save status true or false if sms sendid or not
+        // make a url callback to get response
+    	// }
         
         return ResponseEntity.created(new URI("/api/records/" + result.getId()))
             .headers(HeaderUtil.createEntityCreationAlert(ENTITY_NAME, result.getId().toString()))
