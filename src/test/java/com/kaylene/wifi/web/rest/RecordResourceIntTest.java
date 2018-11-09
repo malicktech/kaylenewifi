@@ -6,6 +6,7 @@ import com.kaylene.wifi.domain.Record;
 import com.kaylene.wifi.domain.Event;
 import com.kaylene.wifi.repository.RecordRepository;
 import com.kaylene.wifi.service.RecordService;
+import com.kaylene.wifi.service.orangeapi.SmsService;
 import com.kaylene.wifi.web.rest.errors.ExceptionTranslator;
 
 import org.junit.Before;
@@ -52,6 +53,9 @@ public class RecordResourceIntTest {
 
     @Autowired
     private RecordService recordService;
+    
+    @Autowired
+    private SmsService smsService;
 
     @Autowired
     private MappingJackson2HttpMessageConverter jacksonMessageConverter;
@@ -72,7 +76,7 @@ public class RecordResourceIntTest {
     @Before
     public void setup() {
         MockitoAnnotations.initMocks(this);
-        final RecordResource recordResource = new RecordResource(recordService);
+        final RecordResource recordResource = new RecordResource(recordService, smsService);
         this.restRecordMockMvc = MockMvcBuilders.standaloneSetup(recordResource)
             .setCustomArgumentResolvers(pageableArgumentResolver)
             .setControllerAdvice(exceptionTranslator)
