@@ -36,7 +36,7 @@ public class OrangeSmsApiService {
 
 		HttpHeaders headers = new HttpHeaders();
 		headers.setContentType(MediaType.APPLICATION_FORM_URLENCODED);
-		headers.add("Authorization", Constants.GET_TOKEN_AUTHORIZATION_HEADER_test);
+		headers.add("Authorization", Constants.GET_TOKEN_AUTHORIZATION_HEADER);
 
 		log.info("Sending getToken request to Orange SMS API");
 

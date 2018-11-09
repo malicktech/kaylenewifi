@@ -31,8 +31,7 @@ public class SmsService {
 	}
 	
 	private String createCodeSmsMessage(Record record) {
-		String message = 
-				"Event: " + record.getEvent().getName() + "\n" +
+		String message = "Event: " + record.getEvent().getName() + "\n" +
 				"Code WIFI: "+ record.getCode() + "\n"+
 				"\n"+
 				"Merci pour votre Achat";
