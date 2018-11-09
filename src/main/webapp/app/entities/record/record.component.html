@@ -18,6 +18,10 @@
             <th jhiSortBy="phone"><span jhiTranslate="kaylenewifiApp.record.phone">Phone</span> <fa-icon [icon]="'sort'"></fa-icon></th>
             <th jhiSortBy="code"><span jhiTranslate="kaylenewifiApp.record.code">Code</span> <fa-icon [icon]="'sort'"></fa-icon></th>
             <th jhiSortBy="event.name"><span jhiTranslate="kaylenewifiApp.record.event">Event</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="createdBy"><span jhiTranslate="userManagement.createdBy">Created By</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="createdDate"><span jhiTranslate="userManagement.createdDate">Created Date</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="lastModifiedBy"><span jhiTranslate="userManagement.lastModifiedBy">Last Modified By</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="lastModifiedDate"><span jhiTranslate="userManagement.lastModifiedDate">Last Modified Date</span> <fa-icon [icon]="'sort'"></fa-icon></th>
             <th></th>
             </tr>
             </thead>
@@ -31,6 +35,10 @@
                         <a [routerLink]="['../event', record.event?.id, 'view' ]" >{{record.event?.name}}</a>
                     </div>
                 </td>
+                <td>{{record.createdBy}}</td>
+                <td>{{record.createdDate | date:'dd/MM/yy HH:mm'}}</td>
+                <td>{{record.lastModifiedBy}}</td>
+                <td>{{record.lastModifiedDate | date:'dd/MM/yy HH:mm'}}</td>
                 <td class="text-right">
                     <div class="btn-group flex-btn-group-container">
                         <button type="submit"

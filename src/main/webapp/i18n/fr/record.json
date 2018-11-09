@@ -15,8 +15,8 @@
             "detail": {
                 "title": "Record"
             },
-            "phone": "Phone",
-            "code": "Code",
+            "phone": "Numéro de téléphone",
+            "code": "Code de connexion",
             "event": "Event"
         }
     }

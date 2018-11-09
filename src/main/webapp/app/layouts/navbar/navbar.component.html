@@ -5,12 +5,12 @@
         </a>
         <a class="navbar-brand logo float-left" routerLink="/" (click)="collapseNavbar()">
             <span class="logo-img"></span>
-            <span jhiTranslate="global.title" class="navbar-title">Kaylenewifi</span> <span class="navbar-version">{{version}}</span>
+            <!-- <span jhiTranslate="global.title" class="navbar-title">Kaylenewifi</span> <span class="navbar-version">{{version}}</span> -->
         </a>
     </div>
     <div class="navbar-collapse collapse" id="navbarResponsive" [ngbCollapse]="isNavbarCollapsed" [ngSwitch]="isAuthenticated()">
         <ul class="navbar-nav ml-auto">
-            <li class="nav-item" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">
+            <li *jhiHasAnyAuthority="'ROLE_ADMIN'" class="nav-item" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">
                 <a class="nav-link" routerLink="/" (click)="collapseNavbar()">
                     <span>
                         <fa-icon [icon]="'home'"></fa-icon>
@@ -24,20 +24,20 @@
                     <span>
                         <fa-icon [icon]="'th-list'"></fa-icon>
                         <span jhiTranslate="global.menu.entities.main">
-                            Entities
+                            Menu
                         </span>
                     </span>
                 </a>
                 <ul class="dropdown-menu" ngbDropdownMenu>
                     <li>
                         <a class="dropdown-item" routerLink="event" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }" (click)="collapseNavbar()">
-                            <fa-icon [icon]="'asterisk'" [fixedWidth]="true"></fa-icon>
+                            <fa-icon [icon]="'th-list'" [fixedWidth]="true"></fa-icon>
                             <span jhiTranslate="global.menu.entities.event">Event</span>
                         </a>
                     </li>
                     <li>
                         <a class="dropdown-item" routerLink="record" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }" (click)="collapseNavbar()">
-                            <fa-icon [icon]="'asterisk'" [fixedWidth]="true"></fa-icon>
+                            <fa-icon [icon]="'th-list'" [fixedWidth]="true"></fa-icon>
                             <span jhiTranslate="global.menu.entities.record">Record</span>
                         </a>
                     </li>
@@ -95,8 +95,8 @@
                         </a>
                     </li>
                     <li>
-                        <a class="dropdown-item" routerLink="entity-audit" routerLinkActive="active" (click)="collapseNavbar()">
-                            <fa-icon [icon]="'list-alt'" [fixedWidth]="true"></fa-icon>&nbsp;
+                        <a class="dropdown-item" routerLink="admin/entity-audit" routerLinkActive="active" (click)="collapseNavbar()">
+                            <fa-icon [icon]="'list'" [fixedWidth]="true"></fa-icon>&nbsp;
                             <span jhiTranslate="global.menu.admin.entity-audit">Entity Audit</span>
                         </a>
                     </li>

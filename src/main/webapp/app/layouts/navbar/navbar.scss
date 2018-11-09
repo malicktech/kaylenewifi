@@ -8,7 +8,7 @@ Navbar
 }
 
 .jh-navbar {
-    background-color: #353d47;
+    background-color: #0072b1;
     padding: 0.2em 1em;
     .profile-image {
         margin: -10px 0px;
@@ -19,7 +19,7 @@ Navbar
     .dropdown-item.active,
     .dropdown-item.active:focus,
     .dropdown-item.active:hover {
-        background-color: #353d47;
+        background-color: #0072b1;
     }
     .dropdown-toggle::after {
         margin-left: 0.15em;
@@ -68,10 +68,10 @@ Logo styles
         padding: 5px 15px;
         .logo-img {
             height: 45px;
-            width: 70px;
+            width: 157px;
             display: inline-block;
             vertical-align: middle;
-            background: url('../../../content/images/logo-jhipster.png') no-repeat center center;
+            background: url('../../../content/images/logo-kaylene.jpg') no-repeat center center;
             background-size: contain;
         }
     }
