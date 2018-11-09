@@ -73,11 +73,11 @@ public class RecordResource {
         }
         
         Record result = recordService.save(record);
-        // if (result != null) {
-        // smsService.sendCodeSms(result);
-        // TODO save status true or false if sms sendid or not
-        // make a url callback to get response
-    	// }
+        if (result != null) {
+            smsService.sendCodeSms(result);
+            // TODO save status true or false if sms sendid or not
+            // make a url callback to get response
+    	}
         
         return ResponseEntity.created(new URI("/api/records/" + result.getId()))
             .headers(HeaderUtil.createEntityCreationAlert(ENTITY_NAME, result.getId().toString()))

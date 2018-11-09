@@ -14,32 +14,32 @@
         <table class="table table-striped">
             <thead>
             <tr jhiSort [(predicate)]="predicate" [(ascending)]="reverse" [callback]="transition.bind(this)">
-            <th jhiSortBy="id"><span jhiTranslate="global.field.id">ID</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <!-- <th jhiSortBy="id"><span jhiTranslate="global.field.id">ID</span> <fa-icon [icon]="'sort'"></fa-icon></th> -->
             <th jhiSortBy="name"><span jhiTranslate="kaylenewifiApp.event.name">Name</span> <fa-icon [icon]="'sort'"></fa-icon></th>
             <th jhiSortBy="createdBy"><span jhiTranslate="userManagement.createdBy">Created By</span> <fa-icon [icon]="'sort'"></fa-icon></th>
             <th jhiSortBy="createdDate"><span jhiTranslate="userManagement.createdDate">Created Date</span> <fa-icon [icon]="'sort'"></fa-icon></th>
                 <th jhiSortBy="lastModifiedBy"><span jhiTranslate="userManagement.lastModifiedBy">Last Modified By</span> <fa-icon [icon]="'sort'"></fa-icon></th>
                 <th jhiSortBy="lastModifiedDate"><span jhiTranslate="userManagement.lastModifiedDate">Last Modified Date</span> <fa-icon [icon]="'sort'"></fa-icon></th>
-            <th></th>
+            <th *jhiHasAnyAuthority="'ROLE_ADMIN'"></th>
             </tr>
             </thead>
             <tbody>
             <tr *ngFor="let event of events ;trackBy: trackId">
-                <td><a [routerLink]="['/event', event.id, 'view' ]">{{event.id}}</a></td>
+                <!-- <td><a [routerLink]="['/event', event.id, 'view' ]">{{event.id}}</a></td> -->
                 <td><span class="badge badge-info">{{event.name}}</span></td>
                 <td>{{event.createdBy}}</td>
                 <td>{{event.createdDate | date:'dd/MM/yy HH:mm'}}</td>
                 <td>{{event.lastModifiedBy}}</td>
                 <td>{{event.lastModifiedDate | date:'dd/MM/yy HH:mm'}}</td>
-                <td class="text-right">
+                <td class="text-right" *jhiHasAnyAuthority="'ROLE_ADMIN'">
                     <div class="btn-group flex-btn-group-container">
-                        <button type="submit"
+                        <!-- <button type="submit"
                                 [routerLink]="['/event', event.id, 'view' ]"
                                 class="btn btn-info btn-sm">
                             <fa-icon [icon]="'eye'"></fa-icon>
                             <span class="d-none d-md-inline" jhiTranslate="entity.action.view">View</span>
-                        </button>
-                        <button disabled type="submit"
+                        </button> -->
+                        <button type="submit"
                                 [routerLink]="['/event', event.id, 'edit']"
                                 class="btn btn-primary btn-sm">
                             <fa-icon [icon]="'pencil-alt'"></fa-icon>
@@ -49,7 +49,7 @@
                                 [routerLink]="['/', { outlets: { popup: 'event/'+ event.id + '/delete'} }]"
                                 replaceUrl="true"
                                 queryParamsHandling="merge"
-                                class="btn btn-danger btn-sm">
+                                class="btn btn-default btn-sm">
                             <fa-icon [icon]="'times'"></fa-icon>
                             <span disabled class="d-none d-md-inline" jhiTranslate="entity.action.delete">Delete</span>
                         </button>

@@ -2,20 +2,20 @@
     "kaylenewifiApp": {
         "event": {
             "home": {
-                "title": "Events",
-                "createLabel": "Créer un nouveau Event",
-                "createOrEditLabel": "Créer ou éditer un Event"
+                "title": "Evénements",
+                "createLabel": "Créer un nouveau événement",
+                "createOrEditLabel": "Créer ou éditer un événement"
             },
-            "created": "Un nouveau Event a été créé avec l'identifiant {{ param }}",
-            "updated": "Le Event avec l'identifiant {{ param }} a été mis à jour",
-            "deleted": "Le Event avec l'identifiant {{ param }} a été supprimé",
+            "created": "Un nouveau événement a été créé avec l'identifiant {{ param }}",
+            "updated": "Le événement avec l'identifiant {{ param }} a été mis à jour",
+            "deleted": "Le événement avec l'identifiant {{ param }} a été supprimé",
             "delete": {
-                "question": "Etes-vous certain de vouloir supprimer le Event {{ id }} ?"
+                "question": "Etes-vous certain de vouloir supprimer l'événement {{ id }} ?"
             },
             "detail": {
-                "title": "Event"
+                "title": "Evénement"
             },
-            "name": "Name",
+            "name": "Nom",
             "codes": "Codes"
         }
     }

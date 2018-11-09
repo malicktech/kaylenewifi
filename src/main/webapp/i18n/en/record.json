@@ -2,7 +2,7 @@
     "kaylenewifiApp": {
         "record": {
             "home": {
-                "title": "Records",
+                "title": "Wifi Codes",
                 "createLabel": "Create a new Record",
                 "createOrEditLabel": "Create or edit a Record"
             },

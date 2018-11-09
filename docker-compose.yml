@@ -13,7 +13,7 @@ services:
         environment:
             - _JAVA_OPTIONS=-Xmx512m -Xms256m
             - SPRING_PROFILES_ACTIVE=prod,swagger
-            - SPRING_DATASOURCE_URL=jdbc:mysql://kaylenewifi-mysql:3306/kaylenewifi?useUnicode=true&characterEncoding=utf8&useSSL=false
+            - SPRING_DATASOURCE_URL=jdbc:mysql://kaylenewifi-mysql:3306/kaylenewifi_test?useUnicode=true&characterEncoding=utf8&useSSL=false
             - JHIPSTER_SLEEP=10
             - JHIPSTER_LOGGING_LOGSTASH_ENABLED=true
             - JHIPSTER_LOGGING_LOGSTASH_HOST=jhipster-logstash

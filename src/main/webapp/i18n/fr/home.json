@@ -1,7 +1,7 @@
 {
     "home": {
         "title": "Bienvenu sur Kaylene WIFI",
-        "subtitle": "Ceci est votre page d'accueil",
+        "subtitle": "Créer des événenements et enregistrer des Pass WIFI KAYLENE",
         "logged": {
             "message": "Vous êtes connecté en tant que \"{{username}}\"."
         },

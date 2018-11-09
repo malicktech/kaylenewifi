@@ -2,22 +2,22 @@
     "kaylenewifiApp": {
         "record": {
             "home": {
-                "title": "Records",
-                "createLabel": "Créer un nouveau Record",
-                "createOrEditLabel": "Créer ou éditer un Record"
+                "title": "Pass kaylene Wifi",
+                "createLabel": "Enregistrer un nouveau code",
+                "createOrEditLabel": "Enregistrer ou éditer un code"
             },
-            "created": "Un nouveau Record a été créé avec l'identifiant {{ param }}",
-            "updated": "Le Record avec l'identifiant {{ param }} a été mis à jour",
-            "deleted": "Le Record avec l'identifiant {{ param }} a été supprimé",
+            "created": "Un nouveau code a été enregistré et envoyé au numéro {{ param }}",
+            "updated": "L'enregistrement du code {{ param }} a été mis à jour",
+            "deleted": "L'enregistrement du code {{ param }} a été supprimé",
             "delete": {
-                "question": "Etes-vous certain de vouloir supprimer le Record {{ id }} ?"
+                "question": "Etes-vous certain de vouloir supprimer le code {{ id }} ?"
             },
             "detail": {
-                "title": "Record"
+                "title": "Passe wifi"
             },
             "phone": "Numéro de téléphone",
             "code": "Code de connexion",
-            "event": "Event"
+            "event": "Evénement"
         }
     }
 }
