@@ -23,42 +23,49 @@ node {
             sh "./mvnw com.github.eirslett:frontend-maven-plugin:npm"
         }
 
-        stage('backend tests') {
-            try {
-                sh "./mvnw test"
-            } catch(err) {
-                throw err
-            } finally {
-                junit '**/target/surefire-reports/TEST-*.xml'
-            }
-        }
+        // stage('backend tests') {
+        //     try {
+        //         sh "./mvnw test"
+        //     } catch(err) {
+        //         throw err
+        //     } finally {
+        //         junit '**/target/surefire-reports/TEST-*.xml'
+        //     }
+        // }
 
-        stage('frontend tests') {
-            try {
-                sh "./mvnw com.github.eirslett:frontend-maven-plugin:npm -Dfrontend.npm.arguments='test -- -u'"
-            } catch(err) {
-                throw err
-            } finally {
-                junit '**/target/test-results/jest/TESTS-*.xml'
-            }
-        }
+        // stage('frontend tests') {
+        //     try {
+        //         sh "./mvnw com.github.eirslett:frontend-maven-plugin:npm -Dfrontend.npm.arguments='test -- -u'"
+        //     } catch(err) {
+        //         throw err
+        //     } finally {
+        //         junit '**/target/test-results/jest/TESTS-*.xml'
+        //     }
+        // }
 
         stage('packaging') {
             sh "./mvnw verify -Pprod -DskipTests"
             archiveArtifacts artifacts: '**/target/*.war', fingerprint: true
         }
+        stage('Directory Permission') {
+		        sh "chmod 777 -R target"
+            }
     }
 
-    def dockerImage
-    stage('build docker') {
-        sh "cp -R src/main/docker target/"
-        sh "cp target/*.war target/docker/"
-        dockerImage = docker.build('docker-login/kaylenewifi', 'target/docker')
-    }
+    maintainer_name = "kaylene"
+        container_name = "kaylenewifi"
+        registry_url = "https://index.docker.io/v1/"
+        docker_creds_id = "docker-login"
 
-    stage('publish docker') {
-        docker.withRegistry('https://registry.hub.docker.com', 'docker-login') {
-            dockerImage.push 'latest'
+        def dockerImage
+        stage('build docker') {
+            sh "cp -R src/main/docker target/"
+            sh "cp target/*.war target/docker/"
+            dockerImage = docker.build("${maintainer_name}/${container_name}", 'target/docker')
         }
-    }
+
+        stage('publish docker') {
+            docker.withRegistry("${registry_url}", "${docker_creds_id}") {
+                dockerImage.push 'test'
+            }
 }
