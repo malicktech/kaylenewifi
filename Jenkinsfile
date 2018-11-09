@@ -68,4 +68,5 @@ node {
             docker.withRegistry("${registry_url}", "${docker_creds_id}") {
                 dockerImage.push 'test'
             }
+        }
 }
