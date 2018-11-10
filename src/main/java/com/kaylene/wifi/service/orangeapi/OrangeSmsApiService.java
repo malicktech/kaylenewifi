@@ -39,7 +39,7 @@ public class OrangeSmsApiService {
 	public final static String GET_TOKEN_AUTHORIZATION_HEADER = "Basic cDdXcGpreDQ2QmRUa2R0WkFaRkFXdGgxMDFiak9MRmk6SDd3VkdNSEVDdnNTVUJmUA==";
 	public final static String GET_TOKEN_REQUEST_BODY = "grant_type=client_credentials";
 	public final static String SEND_SMS_URL = "https://api.orange.com/smsmessaging/v1/outbound/tel%3A%2B22100000000/requests";
-	public final static String SMS_SENDER_ADDRESS = "tel:+2B22100000000";
+	public final static String SMS_SENDER_ADDRESS = "tel:+22100000000";
 	
 	private static final String TOKEN_FILE = "token_file.tmp";
 
@@ -212,6 +212,10 @@ public class OrangeSmsApiService {
 				sendSms(phoneNumber, message);
 			}
 			if (e.getStatusCode().value() == 403) {
+				// credential
+			}
+			if (e.getStatusCode().value() == 403) {
+				// not send
 			}
 			if (e.getStatusCode().value() == 401) {
 				// can cause a loop infinite if auth is not correct
