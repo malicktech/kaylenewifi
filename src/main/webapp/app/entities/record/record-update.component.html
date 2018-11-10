@@ -5,17 +5,19 @@
                 Record</h2>
             <div>
                 <jhi-alert-error></jhi-alert-error>
+
                 <!-- <div class="form-group" [hidden]="!record.id">
                     <label for="id" jhiTranslate="global.field.id">ID</label>
                     <input type="text" class="form-control" id="id" name="id"
                         [(ngModel)]="record.id" readonly />
                 </div> -->
 
+                <!-- {{events[0]}} -->
                 <div class="form-group">
                     <label class="form-control-label" jhiTranslate="kaylenewifiApp.record.event" for="field_event">Event</label>
                     <select class="form-control" id="field_event" name="event" [(ngModel)]="record.event" required>
-                        <option *ngIf="!editForm.value.event" [ngValue]="null" selected></option>
-                        <option [ngValue]="eventOption.id === record.event?.id ? record.event : eventOption" *ngFor="let eventOption of events; trackBy: trackEventById">{{eventOption.name}}</option>
+                        <!-- <option *ngIf="!editForm.value.event" selected></option> -->
+                        <option [ngValue]="eventOption.id === record.event?.id ? record.event : eventOption" *ngFor="let eventOption of events; first as isFirst; trackBy: trackEventById" [selected]="isFirst">{{eventOption.name}}</option>
                     </select>
                 </div>
                 <div [hidden]="!(editForm.controls.event?.dirty && editForm.controls.event?.invalid)">
