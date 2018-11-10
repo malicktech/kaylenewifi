@@ -5,7 +5,7 @@ export interface IRecord {
     phone?: string;
     code?: string;
     firstName?: string;
-    name?: string;
+    lastName?: string;
     address?: string;
     email?: string;
     event?: IEvent;
@@ -17,7 +17,7 @@ export class Record implements IRecord {
         public phone?: string,
         public code?: string,
         public firstName?: string,
-        public name?: string,
+        public lastName?: string,
         public address?: string,
         public email?: string,
         public event?: IEvent
