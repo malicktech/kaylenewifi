@@ -52,5 +52,27 @@
             <column name="last_modified_date" type="timestamp"/>
         </addColumn>
     </changeSet>
+    
+    <!-- Added the entity audit columns -->
+    <changeSet id="20181110052100-1" author="Malick">
+        <addColumn tableName="record">
+            <column name="first_name" type="varchar(255)">
+                <constraints nullable="true" />
+            </column>
+
+            <column name="last_name" type="varchar(255)">
+                <constraints nullable="true" />
+            </column>
+
+            <column name="address" type="varchar(255)">
+                <constraints nullable="true" />
+            </column>
+
+            <column name="email" type="varchar(255)">
+                <constraints nullable="true" />
+            </column>
+        </addColumn>
+    </changeSet>
+    
     <!-- jhipster-needle-liquibase-add-changeset - JHipster will add changesets here, do not remove-->
 </databaseChangeLog>

@@ -15,9 +15,13 @@
             "detail": {
                 "title": "Passe wifi"
             },
-            "phone": "Numéro de téléphone",
+            "phone": "Tel",
             "code": "Code de connexion",
-            "event": "Evénement"
+            "firstName": "Prénom",
+            "lastName": "Nom",
+            "address": "Adresse",
+            "email": "Email",
+            "event": "Event"
         }
     }
 }

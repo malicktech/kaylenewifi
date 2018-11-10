@@ -7,8 +7,8 @@
             "jhipster-needle-menu-add-element": "JHipster will add additional menu entries here (do not translate!)",
             "entities": {
                 "main": "Entités",
-                "event": "Evenènement",
-                "record": "Code Wifi",
+                "event": "Event",
+                "record": "Codes",
                 "jhipster-needle-menu-add-entry": "JHipster will add additional entities here (do not translate!)"
             },
             "account": {
@@ -21,16 +21,16 @@
                 "register": "Créer un compte"
             },
             "admin": {
-                "main": "Administration",
-                "userManagement": "Gestion des utilisateurs",
+                "main": "Admin",
+                "userManagement": "Gestion des users",
                 "tracker": "Suivi des utilisateurs",
                 "metrics": "Métriques",
                 "health": "Diagnostics",
-                "configuration": "Configuration",
+                "configuration": "Config",
                 "logs": "Logs",
                 "audits": "Audits",
                 "apidocs": "API",
-                "database": "Base de données",
+                "database": "Database",
                 "entity-audit": "Entity Audit",
                 "jhipster-needle-menu-add-admin-element": "JHipster will add additional menu entries here (do not translate!)"
             },
@@ -132,7 +132,7 @@
         "NotNull": "Le champ {{fieldName}} ne peut pas être vide !",
         "Size": "Le champ {{fieldName}} ne respecte pas les critères minimum et maximum !",
         "userexists": "Login déjà utilisé !",
-        "codeexists": "Code déjà enregsitré !",
+        "codeexists": "Code déjà utilisé !",
         "emailexists": "Email déjà utilisé !",
         "idexists": "Une nouvelle entité {{entityName}} ne peut pas avoir d'ID !",
         "idnull": "Invalid ID"

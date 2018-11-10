@@ -68,7 +68,7 @@ node {
 
         stage('publish docker') {
             docker.withRegistry("${registry_url}", "${docker_creds_id}") {
-                dockerImage.push 'test'
+                dockerImage.push '1.0.0-beta'
             }
         }
 }

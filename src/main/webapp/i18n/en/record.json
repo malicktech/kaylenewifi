@@ -17,6 +17,10 @@
             },
             "phone": "Phone",
             "code": "Code",
+            "firstName": "First Name",
+            "lastName": "Name",
+            "address": "Address",
+            "email": "Email",
             "event": "Event"
         }
     }

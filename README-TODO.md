@@ -14,10 +14,20 @@
 - Set up jhipster console
 - change admin password
 
+- ajout info supllméntaire
+
 - improve sms auth
  	- set up single ton restemplate
  	- 
 https://www.baeldung.com/how-to-use-resttemplate-with-basic-authentication-in-spring
+
+- audit
+https://www.baeldung.com/database-auditing-jpa
+simplify, just event
+manual in record
+remove history 
+
+
 
 # Import JDL
 

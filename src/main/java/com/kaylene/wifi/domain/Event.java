@@ -16,7 +16,6 @@ import java.util.Objects;
 /**
  * ENTITIES
  */
-@ApiModel(description = "ENTITIES")
 @Entity
 @Table(name = "event")
 @Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)

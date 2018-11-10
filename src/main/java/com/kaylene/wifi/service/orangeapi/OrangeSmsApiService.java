@@ -1,25 +1,26 @@
 package com.kaylene.wifi.service.orangeapi;
 
 import java.net.URI;
-import java.net.URISyntaxException;
+import java.text.Normalizer;
 
 import org.json.JSONObject;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.web.client.RestTemplateBuilder;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.MediaType;
+import org.springframework.scheduling.annotation.Async;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.HttpClientErrorException;
 import org.springframework.web.client.HttpServerErrorException;
 import org.springframework.web.client.HttpStatusCodeException;
 import org.springframework.web.client.RestClientException;
 import org.springframework.web.client.RestTemplate;
-import org.springframework.web.util.UriComponents;
-import org.springframework.web.util.UriComponentsBuilder;
 
 import com.kaylene.wifi.config.Constants;
+import com.kaylene.wifi.domain.Record;
 
 @Service
 public class OrangeSmsApiService {
@@ -29,11 +30,22 @@ public class OrangeSmsApiService {
 	private final RestTemplate restTemplate;
 
 	public OrangeSmsApiService(RestTemplateBuilder RestTemplateBuilder) {
-		this.restTemplate = RestTemplateBuilder.build();
+		this.restTemplate = RestTemplateBuilder. build();
 	}
-	
-	public String getAccesToken() {
 
+	@Async
+	public void sendCodeSms(Record record) {
+		String message = createCodeSmsMessage(record);
+		sendSms(record.getPhone(), message);
+	}
+
+	private String createCodeSmsMessage(Record record) {
+		String message = "Bonjour, votre code d’accès au WIFI-KAYLENE est le :" + record.getCode();
+		// Normalize to delete accents
+		return Normalizer.normalize(message, Normalizer.Form.NFD).replaceAll("[^\\p{ASCII}]", "");
+	}
+
+	public String getAccesToken() {
 		HttpHeaders headers = new HttpHeaders();
 		headers.setContentType(MediaType.APPLICATION_FORM_URLENCODED);
 		headers.add("Authorization", Constants.GET_TOKEN_AUTHORIZATION_HEADER);
@@ -54,11 +66,9 @@ public class OrangeSmsApiService {
 	public void sendSms(String phoneNumber, String message) {
 		log.debug("REST request to save Record : {} / {}", phoneNumber, message);
 
-		// taille maximale d'un SMS: 140 caractères, si le message dépasse cette limite,
-		// prendre les 160 premiers caractères
-		if (message.length() > 140) {
+		// SMS Max Length : 140 char
+		if (message.length() > 140)
 			message = message.substring(0, 140);
-		}
 
 		JSONObject requestBody = new JSONObject();
 		JSONObject outboundSMSMessageRequest = new JSONObject();
@@ -71,8 +81,6 @@ public class OrangeSmsApiService {
 			outboundSMSMessageRequest.put("senderName", Constants.SMS_SENDER_NAME);
 			outboundSMSMessageRequest.put("outboundSMSTextMessage", outboundSMSTextMessage);
 			requestBody.put("outboundSMSMessageRequest", outboundSMSMessageRequest);
-			log.debug(requestBody.toString());
-			
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -81,17 +89,10 @@ public class OrangeSmsApiService {
 		headers.setContentType(MediaType.APPLICATION_JSON);
 		headers.add("Authorization", "Bearer" + " " + getAccesToken());
 
-		// ******** Build URI from URL to prevent restTemplate of encoding it ******
-		String url = Constants.SEND_SMS_URL;
-		UriComponentsBuilder builder = UriComponentsBuilder.fromHttpUrl(url);
-		UriComponents components = builder.build(true);
-		URI uri = components.toUri();
-		// **************************************************************************
-
 		HttpEntity<String> entity = new HttpEntity<String>(requestBody.toString(), headers);
 
 		try {
-			restTemplate.postForObject(uri, entity, Object.class);
+			restTemplate.postForObject(new URI(Constants.SEND_SMS_URL), entity, Object.class);
 			log.debug("Sent SMS to '{}'", phoneNumber);
 			// } catch (URISyntaxException e) {
 			// log.error("URISyntaxException > URI " + e.getMessage());
