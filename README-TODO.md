@@ -18,7 +18,7 @@
 
 - improve sms auth
  	- set up single ton restemplate
- 	- 
+ https://github.com/kytkemo/preemptive-authentication-rest-template
 https://www.baeldung.com/how-to-use-resttemplate-with-basic-authentication-in-spring
 
 - audit
@@ -43,3 +43,8 @@ in C:\DevLabs\KayleneLabs\kaylenewifi
 
 	docker tag kaylenewifi kaylene/kaylenewifi
 	docker push kaylene/kaylenewifi
+	
+# Orange
+https://developer.orange.com/tech_guide/orange-apis-error-handling/
+https://developer.orange.com/tech_guide/2-legged-oauth/
+https://orange.developpez.com/tutoriels/api-sms/envoyer-sms/ 

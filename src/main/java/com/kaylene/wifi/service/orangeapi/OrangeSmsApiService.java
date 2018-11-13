@@ -13,6 +13,7 @@ import java.util.Optional;
 import org.json.JSONObject;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.web.client.RestTemplateBuilder;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
@@ -32,21 +33,29 @@ public class OrangeSmsApiService {
 
 	private final static Logger log = LoggerFactory.getLogger(OrangeSmsApiService.class);
 
-    
-    // move to config
-    public final static String SMS_SENDER_NAME = "KAYLENE-Wifi";
+	// move to config
+	public final static String SMS_SENDER_NAME = "KAYLENE-Wifi";
 	public final static String GET_TOKEN_URL = "https://api.orange.com/oauth/v2/token";
 	public final static String GET_TOKEN_AUTHORIZATION_HEADER = "Basic cDdXcGpreDQ2QmRUa2R0WkFaRkFXdGgxMDFiak9MRmk6SDd3VkdNSEVDdnNTVUJmUA==";
+	private static final String CLIENT_ID = "p7Wpjkx46BdTkdtZAZFAWth101bjOLFi";
+	private static final String SECRET_ID = "H7wVGMHECvsSUBfP";
 	public final static String GET_TOKEN_REQUEST_BODY = "grant_type=client_credentials";
 	public final static String SEND_SMS_URL = "https://api.orange.com/smsmessaging/v1/outbound/tel%3A%2B22100000000/requests";
 	public final static String SMS_SENDER_ADDRESS = "tel:+22100000000";
-	
+
 	private static final String TOKEN_FILE = "token_file.tmp";
 
-	private final RestTemplate restTemplate;
+	@Autowired
+	private RestTemplate restTemplate;
 
-	public OrangeSmsApiService(RestTemplateBuilder RestTemplateBuilder) {
-		this.restTemplate = RestTemplateBuilder.build();
+	public OrangeSmsApiService(RestTemplateBuilder restTemplateBuilder
+	// ,RestTemplate restTemplate
+	) {
+		// build using basic authentication details
+		this.restTemplate = restTemplateBuilder.basicAuthorization(CLIENT_ID, SECRET_ID).build();
+		// this.restTemplate = RestTemplateFactory.;
+		// restTemplate.getInterceptors().add(new
+		// BasicAuthorizationInterceptor("username", "password"));
 	}
 
 	@Async
@@ -183,22 +192,24 @@ public class OrangeSmsApiService {
 			e.printStackTrace();
 		}
 
-		String token = null;
-		try {
-			token = getAccesToken();
-		} catch (URISyntaxException e) {
-			log.error("URISyntaxException " + e.getMessage());
-			log.error(token);
-		}
+		// String token = null;
+		// try {
+		// token = getAccesToken();
+		// } catch (URISyntaxException e) {
+		// log.error("URISyntaxException " + e.getMessage());
+		// log.error(token);
+		// }
 
 		HttpHeaders headers = new HttpHeaders();
 		headers.setContentType(MediaType.APPLICATION_JSON);
-		headers.add("Authorization", "Bearer" + " " + token);
+		// headers.add("Authorization", "Bearer" + " " + token);
 
 		HttpEntity<String> entity = new HttpEntity<String>(requestBody.toString(), headers);
 
 		try {
-			restTemplate.postForObject(new URI(SEND_SMS_URL), entity, Object.class);
+			log.debug(headers.toString());
+			restTemplate.postForObject(new URI(SEND_SMS_URL), new HttpEntity<>(requestBody.toString()), Object.class);
+//			restTemplate.postForObject(new URI(SEND_SMS_URL), entity, Object.class);
 			log.debug("Sent SMS to '{}'", phoneNumber);
 			// } catch (URISyntaxException e) {
 			// log.error("URISyntaxException > URI " + e.getMessage());
@@ -208,8 +219,8 @@ public class OrangeSmsApiService {
 			log.error("HttpClientErrorException > Message : " + e.getMessage());
 			// https://developer.orange.com/tech_guide/orange-apis-error-handling/
 			if (e.getStatusCode().value() == 401) {
-				authenticate();
-				sendSms(phoneNumber, message);
+				// authenticate();
+				// sendSms(phoneNumber, message);
 			}
 			if (e.getStatusCode().value() == 403) {
 				// credential
